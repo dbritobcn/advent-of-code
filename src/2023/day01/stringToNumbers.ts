@@ -13,33 +13,33 @@ const numbersAsStringMap: { [key: string]: string } = {
 
 const numbersAsString = Object.keys(numbersAsStringMap);
 
-export const stringToNumber = (input: string): any => {
-  const indexes: { [key: number]: string } = {};
+export const stringToNumber = (input: string): string => {
+  const numbersAsStringPositions: { [key: number]: string } = {};
 
-  numbersAsString.forEach((curr) => {
-    const index = input.indexOf(curr);
-    if (index >= 0) {
-      indexes[index] = curr;
+  numbersAsString.forEach((curr: string) => {
+    const firstIndex: number = input.indexOf(curr);
+    if (firstIndex >= 0) {
+      numbersAsStringPositions[firstIndex] = curr;
     }
     const lastIndex = input.lastIndexOf(curr);
     if (lastIndex >= 0) {
-      indexes[lastIndex] = curr;
+      numbersAsStringPositions[lastIndex] = curr;
     }
-  }, {});
+  });
 
-  const i: number[] = Object.keys(indexes)
+  const positions: number[] = Object.keys(numbersAsStringPositions)
     .sort((a: string, b: string) => parseInt(a) - parseInt(b))
     .map((key: string) => parseInt(key));
 
-  let output = input;
+  let output: string = input;
   output = output.replace(
-    indexes[i[0]],
-    numbersAsStringMap[indexes[i[0]]] + indexes[i[0]]
+    numbersAsStringPositions[positions[0]],
+    numbersAsStringMap[numbersAsStringPositions[positions[0]]] + numbersAsStringPositions[positions[0]]
   );
-  if (i.length > 1) {
+  if (positions.length > 1) {
     output = output.replaceAll(
-      indexes[i[i.length - 1]],
-      indexes[i[i.length - 1]] + numbersAsStringMap[indexes[i[i.length - 1]]]
+      numbersAsStringPositions[positions[positions.length - 1]],
+      numbersAsStringPositions[positions[positions.length - 1]] + numbersAsStringMap[numbersAsStringPositions[positions[positions.length - 1]]]
     );
   }
   
