@@ -1,7 +1,7 @@
-import { stringToNumber } from "./stringToNumbers";
+import { decodeStringToNumber } from "./decodeStringToNumber";
 
-export const trebuchet = (input: string): number => {
-  const numbers: string[] = stringToNumber(input)
+export const getNumbersFromString = (input: string): number => {
+  const numbers: string[] = decodeStringToNumber(input)
     .split("")
     .filter((char: string) => !isNaN(parseInt(char)));
   if (numbers.length === 0) {
