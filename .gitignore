@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# Output files
+*.js
+*.js.map
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Debug files
+.npm-debug.log*
