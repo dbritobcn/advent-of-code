@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "tsc && jest"
+    "test": "jest"
   },
   "author": "David Brito",
   "license": "ISC",

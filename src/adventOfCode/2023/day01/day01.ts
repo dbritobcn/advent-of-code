@@ -1,7 +1,7 @@
 // Puzzle link: https://adventofcode.com/2023/day/1
 
 import { input } from "./input";
-import { getNumbersFromString } from "./getNumbersFromString";
+import { getNumbersFromString } from "./utils/getNumbersFromString";
 
 export const day01 = (input: string): number => {
   return input
