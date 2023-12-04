@@ -22,6 +22,8 @@ describe("getNumbersFromString", () => {
       expect(getNumbersFromString("4sevenfddxgcvdgx")).toBe(47);
       expect(getNumbersFromString("dffmkvmhhdbzjcgrjc5132")).toBe(52);
       expect(getNumbersFromString("onezvbhrblrkzcrsevensix96jnpxjone")).toBe(11);
+      expect(getNumbersFromString("8fmmthreeeight6five")).toBe(85);
+      expect(getNumbersFromString("8fmmthreeeight6fiveight")).toBe(88);
     });
   
     it("should throw an error if no numbers are found", () => {

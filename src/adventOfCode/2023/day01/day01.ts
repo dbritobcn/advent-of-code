@@ -10,4 +10,4 @@ export const day01 = (input: string): number => {
     .reduce((acc: number, current: number) => acc + current, 0);
 };
 
-console.log("2023 - day 1: ", day01(input));
+// console.log("2023 - day 1: ", day01(input));
