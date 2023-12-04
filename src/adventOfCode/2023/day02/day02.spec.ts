@@ -1,13 +1,12 @@
-import { day02 } from "./day02";
-
-const inputFixture = `Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
-Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
-Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
-Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
-Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green`;
+import { day02Part1, day02Part2 } from "./day02";
+import { inputFixture } from "./test/fixture";
 
 describe('day02', () => {
-    it('should return 0', () => {
-        expect(day02(inputFixture)).toBe(8);
+    it('should part 1 return correctly', () => {
+        expect(day02Part1(inputFixture)).toBe(8);
+    });
+
+    it('should part 2 return correctly', () => {
+        expect(day02Part2(inputFixture)).toBe(2286);
     });
 });

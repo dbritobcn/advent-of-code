@@ -5,7 +5,7 @@ export interface Game {
   cubeSets: CubeSet[];
 }
 
-type CubeSet = {
+export type CubeSet = {
   [key in Color]: number;
 };
 
