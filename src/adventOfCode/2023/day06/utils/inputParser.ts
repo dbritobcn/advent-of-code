@@ -3,7 +3,7 @@ export interface Races {
   distance: number[];
 }
 
-export const inputParser = (input: string): Races => {
+export const inputParser = (input: string, kerning: boolean = false): Races => {
   return input
     .trim()
     .split("\n")
@@ -17,6 +17,9 @@ export const inputParser = (input: string): Races => {
             .trim()
             .split(" ")
             .filter((value: string) => value !== "")
+            .reduce((acc: string[], value: string) => {
+              return kerning ? [acc + value] : [...acc, value];
+            }, [])
             .map((value: string) => parseInt(value)),
         };
       },

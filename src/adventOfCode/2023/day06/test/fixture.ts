@@ -7,3 +7,8 @@ export const inputFixtureParsed: Races = {
   time: [ 7, 15, 30 ],
   distance: [ 9, 40, 200 ]
 };
+
+export const inputKerningFixtureParsed: Races = {
+  time: [ 71530 ],
+  distance: [ 940200 ]
+};
