@@ -9,6 +9,10 @@ jest.mock('./utils/inputParser', () => {
   });
 
 describe("Day 08", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should return 2", () => {
     (inputParser as jest.Mock).mockImplementation(() => inputFixtureParsed01);
     expect(day08Part1(inputFixture01)).toBe(2);

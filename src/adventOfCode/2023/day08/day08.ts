@@ -1,3 +1,4 @@
+import { input } from "./input";
 import { inputParser } from "./utils/inputParser";
 
 const initialNode = 'AAA';
@@ -15,3 +16,5 @@ export const day08Part1 = (input: string): number => {
     } while (currentNode !== finalNode);
     return steps;
 };
+
+// console.log("2023 - day 8 - part 01: ", day08Part1(input));
