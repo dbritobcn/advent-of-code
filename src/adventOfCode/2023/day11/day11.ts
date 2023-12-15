@@ -1,67 +1,49 @@
 import { input } from "./input";
-
-interface Point {
-  x: number;
-  y: number;
-}
-
-export function transpose<T>(m: T[][]): T[][] {
-  return m[0].map((_: T, i: number) => m.map((row: T[]) => row[i]));
-}
-
-export const expandUniverse = (
-  input: string,
-  factor: number = 2
-): string[][] => {
-  const map: string[][] = input
-    .split("\n")
-    .map((row: string) => row.split(""))
-    .reduce(
-      (acc: string[][], row: string[]) =>
-        row.every((point: string) => point === ".")
-          ? [...acc, ...Array(factor).fill(row)]
-          : [...acc, row],
-      []
-    );
-  const transposedMap: string[][] = transpose(map).reduce(
-    (acc: string[][], row: string[]) =>
-      row.every((point: string) => point === ".")
-        ? [...acc, ...Array(factor).fill(row)]
-        : [...acc, row],
-    []
-  );
-  return transpose(transposedMap);
-};
-
-export const parseMap = (map: string[][]): Point[] => {
-  return map.reduce(
-    (acc: Point[], row: string[], y: number) =>
-      acc.concat(
-        row.reduce(
-          (acc: Point[], point: string, x: number) =>
-            point === "#" ? [...acc, { x, y }] : acc,
-          []
-        )
-      ),
-    []
-  );
-};
+import { EmptyRows, Point } from "./types/types";
+import { getEmptyRows } from "./utils/getEmptyRows";
+import { getGalaxies } from "./utils/getGalaxies";
+import { parseMap } from "./utils/parseMap";
 
 export const day11 = (input: string, factor: number = 2): number => {
-  const map: string[][] = expandUniverse(input, factor);
-  const galaxies: Point[] = parseMap(map);
+  const parsedMap: string[][] = parseMap(input);
+  const galaxies: Point[] = getGalaxies(parsedMap);
+  const emptyRows: EmptyRows = getEmptyRows(parsedMap);
   return galaxies.reduce((acc: number, galaxy: Point, galaxyNumber: number) => {
     const restOfGalaxies: Point[] = galaxies.slice(galaxyNumber + 1);
     return (
       acc +
-      restOfGalaxies.reduce(
-        (acc: number, point: Point) =>
-          acc + Math.abs(galaxy.x - point.x) + Math.abs(galaxy.y - point.y),
-        0
-      )
+      restOfGalaxies.reduce((acc: number, otherGalaxy: Point) => {
+        const factorExpanded = {
+          x: Array(Math.abs(galaxy.x - otherGalaxy.x))
+            .fill(0)
+            .map((_, index) =>
+              galaxy.x > otherGalaxy.x
+                ? otherGalaxy.x + index
+                : galaxy.x + index
+            )
+            .filter((x) => emptyRows.x.includes(x)).length,
+          y: Array(Math.abs(galaxy.y - otherGalaxy.y))
+            .fill(0)
+            .map((_, index) =>
+              galaxy.y > otherGalaxy.y
+                ? otherGalaxy.y + index
+                : galaxy.y + index
+            )
+            .filter((x) => emptyRows.y.includes(x)).length,
+        };
+        return (
+          acc +
+          Math.abs(galaxy.x - otherGalaxy.x) -
+          factorExpanded.x +
+          factorExpanded.x * factor +
+          Math.abs(galaxy.y - otherGalaxy.y) -
+          factorExpanded.y +
+          factorExpanded.y * factor
+        );
+      }, 0)
     );
   }, 0);
 };
 
 // console.log("2023 - day 11 - part 01: ", day11(input));
-// console.log("2023 - day 11 - part 02: ", day11(input, 10000));
+// console.log("2023 - day 11 - part 02: ", day11(input, 1000000));
