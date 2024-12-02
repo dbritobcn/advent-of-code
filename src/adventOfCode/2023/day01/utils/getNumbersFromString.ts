@@ -9,6 +9,6 @@ export const getNumbersFromString = (input: string): number => {
   }
   const firstNumber: string = numbers.shift() || "0";
   const lastNumber: string = numbers.pop() || firstNumber;
-  
+
   return parseInt(firstNumber + lastNumber);
 };

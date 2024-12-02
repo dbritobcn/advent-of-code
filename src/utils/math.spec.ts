@@ -10,7 +10,7 @@ describe('Math', () => {
     });
 
     describe('MCM', () => {
-        it('should return mcm2 successfully', () => {
+        it('should return mcm successfully', () => {
             expect(mcm([2, 3])).toBe(6);
             expect(mcm([4, 6])).toBe(12);
             expect(mcm([2, 4, 3])).toBe(12);

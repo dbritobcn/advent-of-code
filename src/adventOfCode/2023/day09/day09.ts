@@ -1,9 +1,6 @@
 import { input } from "./input";
 
-const getNewValue = (
-  sequence: number[],
-  backwards: boolean
-): number => {
+const getNewValue = (sequence: number[], backwards: boolean): number => {
   const newSequence: number[] = sequence.reduce(
     (acc: number[], _, index: number) => {
       return index === 0 ? [] : [...acc, sequence[index] - sequence[index - 1]];
@@ -13,14 +10,12 @@ const getNewValue = (
   return newSequence.some((number: number): boolean => number !== 0)
     ? backwards
       ? newSequence[0] - getNewValue(newSequence, backwards)
-      : newSequence[newSequence.length - 1] + getNewValue(newSequence, backwards)
+      : newSequence[newSequence.length - 1] +
+        getNewValue(newSequence, backwards)
     : 0;
 };
 
-export const day09 = (
-  input: string,
-  backwards: boolean = false
-): number => {
+export const day09 = (input: string, backwards: boolean = false): number => {
   return input
     .split("\n")
     .map((line: string): number[] => line.split(" ").map(Number))
