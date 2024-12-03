@@ -12,16 +12,4 @@ describe("isReportSafe", () => {
     expect(isReportSafe([1, 3, 2, 4, 5])).toBe(false);
     expect(isReportSafe([8, 6, 4, 4, 1])).toBe(false);
   });
-
-  it.skip("should return true if the report is safe with problem dampener", () => {
-    expect(isReportSafe([7, 6, 4, 2, 1], true)).toBe(true);
-    expect(isReportSafe([1, 3, 2, 4, 5], true)).toBe(true);
-    expect(isReportSafe([8, 6, 4, 4, 1], true)).toBe(true);
-    expect(isReportSafe([1, 3, 6, 7, 9], true)).toBe(true);
-  });
-
-  it.skip("should return false if the report is not safe with problem dampener", () => {
-    expect(isReportSafe([1, 2, 7, 8, 9], true)).toBe(false);
-    expect(isReportSafe([9, 7, 6, 2, 1], true)).toBe(false);
-  });
 });
