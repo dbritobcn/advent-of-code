@@ -23,5 +23,5 @@ export const day02Part2 = (input: string): number => {
   }, 0);
 };
 
-// console.log("2024 - day 02 - part 01: ", day02Part1(input)); // 421
-// console.log("2024 - day 02 - part 02: ", day02Part2(input)); // 476
+console.log("2024 - day 02 - part 01: ", day02Part1(input)); // 421
+console.log("2024 - day 02 - part 02: ", day02Part2(input)); // 476

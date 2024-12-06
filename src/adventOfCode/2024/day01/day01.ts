@@ -47,5 +47,5 @@ export const day01Part2 = (input: string): number => {
   }, 0);
 };
 
-// console.log("2024 - day 01 - part 01: ", day01Part1(input)); // 1580061
-// console.log("2024 - day 01 - part 02: ", day01Part2(input)); // 1580061
+console.log("2024 - day 01 - part 01: ", day01Part1(input)); // 1580061
+console.log("2024 - day 01 - part 02: ", day01Part2(input)); // 1580061

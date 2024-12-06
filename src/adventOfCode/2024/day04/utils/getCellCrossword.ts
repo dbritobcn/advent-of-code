@@ -1,9 +1,6 @@
-const xmas = "XMAS";
+import { Direction } from "../constants";
 
-type Direction = {
-  x: number;
-  y: number;
-};
+const xmas = "XMAS";
 
 const directions: Record<string, Direction> = {
   N: { x: 0, y: -1 },
@@ -16,13 +13,13 @@ const directions: Record<string, Direction> = {
   NW: { x: -1, y: -1 },
 };
 
-export const getCellCoincidencies = (
+export const getCellCrossword = (
   board: string[][],
   x: number,
   y: number
 ): number =>
   Object.values(directions).reduce(
-    (coincidences: number, direction: Direction, index: number) => {
+    (coincidences: number, direction: Direction) => {
       const cellsToCheck: string[] = xmas.split("").map((_, index) => {
         try {
           return board[x + direction.x * index][y + direction.y * index];

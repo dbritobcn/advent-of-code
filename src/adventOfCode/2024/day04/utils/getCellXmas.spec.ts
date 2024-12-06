@@ -1,4 +1,4 @@
-import { getCellCoincidencies } from "./getCellCoincidencies";
+import { getCellXmas } from "./getCellXmas";
 
 export const boardFixture = [
   ["M", "M", "M", "S", "X", "X", "M", "A", "S", "M"],
@@ -13,13 +13,15 @@ export const boardFixture = [
   ["M", "X", "M", "X", "A", "X", "M", "A", "S", "X"],
 ];
 
-describe("getCellCoincidencies", () => {
+describe("getCellXmas", () => {
   it("should return number of coincidencies for a cell", () => {
-    expect(getCellCoincidencies(boardFixture, 0, 0)).toBe(0);
-    expect(getCellCoincidencies(boardFixture, 0, 5)).toBe(1);
-    expect(getCellCoincidencies(boardFixture, 5, 0)).toBe(1);
-    expect(getCellCoincidencies(boardFixture, 4, 6)).toBe(2);
-    expect(getCellCoincidencies(boardFixture, 9, 3)).toBe(2);
-    expect(getCellCoincidencies(boardFixture, 3, 9)).toBe(2);
+    expect(getCellXmas(boardFixture, 0, 0)).toBe(0);
+    expect(getCellXmas(boardFixture, 1, 2)).toBe(1);
+    expect(getCellXmas(boardFixture, 3, 2)).toBe(1);
+    expect(getCellXmas(boardFixture, 7, 1)).toBe(1);
+    expect(getCellXmas(boardFixture, 7, 2)).toBe(0);
+    expect(getCellXmas(boardFixture, 7, 3)).toBe(1);
+    expect(getCellXmas(boardFixture, 7, 4)).toBe(0);
+    expect(getCellXmas(boardFixture, 7, 5)).toBe(1);
   });
 });
